@@ -1,0 +1,9 @@
+CREATE USER 'csd'@'%' IDENTIFIED BY 'mysql';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'
+    IDENTIFIED BY 'mysql'  
+    WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON northwind.* TO 'csd'@'%'
+    IDENTIFIED BY 'mysql'
+    WITH GRANT OPTION;
+
+FLUSH PRIVILEGES; 
