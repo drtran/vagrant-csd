@@ -5,8 +5,8 @@ echo on
 ## Must edit THIS FILE with UNIX EOL.
 ##
 
-cfg_dir="$(dirname "$0")"
-"$cfg_dir/utils.bash"
+cfg_dir="/vagrant/config"
+source "$cfg_dir/utils.bash"
 
 ##
 ## Installing git

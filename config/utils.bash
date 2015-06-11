@@ -5,6 +5,7 @@ echo on
 ## Must edit THIS FILE with UNIX EOL.
 ##
 
+cfg_dir="/vagrant/config"
 results_file="$cfg_dir/results.txt"
 tmp_dir="/tmp"
 
@@ -12,7 +13,7 @@ tmp_dir="/tmp"
 ## 
 ## $1: app_name
 ## $2: version_param
-## $2: expected_version
+## $2: expected
 ##
 ## verify "git" "--version" "1.8.3.1"
 ##
@@ -22,13 +23,13 @@ function verify() {
   version_param=$2
   expected=$3
   now=$(date)
-  $app_name $version_param > "$tmp_dir/tmp_file"
-  found=$(grep -ic $expected "$tmp_dir/tmp_file)"
-  if [ $found -eq 1 ] 
+  $app_name $version_param &> "$tmp_dir/tmp_file"
+  found=$(grep -ic "$expected" "$tmp_dir/tmp_file")
+  if [ $found -ge 1 ] 
   then
-    echo "$now: $1 installed successfully."  >> $results_file
+    echo "$now: $app_name $expected installed successfully."  >> $results_file
   else
-    echo "$now: $1 NOT installed successfully." >> $results_file
+    echo "$now: $app_name $expected NOT installed successfully." >> $results_file
   fi
 }
 

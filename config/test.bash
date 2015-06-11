@@ -3,12 +3,13 @@ echo on
 echo 'testing'
 
 
-cfg_dir="$(dirname "$0")"
-"$cfg_dir/utils.bash"
+cfg_dir="/vagrant/config"
+source "$cfg_dir/utils.bash"
 
 ##
 ## Installing vim
 ##
 log "Test logging ..."
-verify "git" "--verion" "1.3.8.1"
+verify "git" "--version" "1.3.8.1"
+verify "java" "-version" "1.8.0_25"
 log "test logging ends ..."
